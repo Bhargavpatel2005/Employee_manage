@@ -7,20 +7,11 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-
-body {
-    height: 100vh;
-    width: 100%;
-    background-image: url("images/hero-bg.jpg");
-    background-position: center;
-    background-size: cover;
-}
-
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 110px;
+    width: 60px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -30,10 +21,11 @@ body {
     --webkit-backdrop-filter: blur(17px);
     border-right: 1px solid rgba(255, 255, 255, 0.7);
     transition: width 0.3s ease;
+    font-size: smaller;
 }
 
 .sidebar:hover {
-    width: 260px;
+    width: 190px;
 }
 
 .sidebar .logo {
@@ -79,7 +71,7 @@ body {
 
 .links li:hover {
     cursor: pointer;
-    background: #fff;
+    background: #afd8eb;
 }
 
 .links h4 {
@@ -95,7 +87,7 @@ body {
 
 .links hr {
     margin: 10px 8px;
-    border: 1px solid #4c4c4c;
+    border: 1px solid #b3afaf;
 }
 
 .sidebar:hover .links hr {
