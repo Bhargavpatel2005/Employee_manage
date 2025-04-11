@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     background-image: url("/images/hero-bg.jpg");
-    height: 200vh;
+    height: auto;
     width: 100ch;
     background-position: center;
     background-size: cover;
