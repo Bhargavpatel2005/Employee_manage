@@ -1,6 +1,11 @@
 {
   "name": "hr-angual",
   "version": "0.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhargavpatel2005/Employee_manage.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,7 +28,8 @@
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "cool-lib": "github:Bhargavpatel2005/cool-lib"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.3",
