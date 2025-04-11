@@ -178,7 +178,6 @@
     blinkingCursor 500ms steps(50) infinite normal;
     margin-right: 20px;
 }
-
 /* Typewriter Effect */
 @keyframes typewriter {
 

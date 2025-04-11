@@ -17,7 +17,7 @@ export class AuthService {
     if (email === validEmail && password === validPassword) {
       const fakeToken = 'fake-jwt-token';
       return of({ token: fakeToken }).pipe(
-        delay(500), // simulate network delay
+        delay(1000), // simulate network delay
         tap(res => {
           localStorage.setItem('token', res.token);
         })
