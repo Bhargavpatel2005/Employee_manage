@@ -19,7 +19,7 @@ export class AuthService {
       return of({ token: fakeToken }).pipe(
         delay(1000), // simulate network delay
         tap(res => {
-          localStorage.setItem('token', res.token);
+          sessionStorage.setItem('token', res.token);
         })
       );
     } else {
@@ -28,10 +28,10 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
 
   isLoggedIn() {
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
 }

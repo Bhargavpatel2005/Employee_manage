@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 /* Global Styles */
 
 .center-page {
@@ -8,8 +9,6 @@
     align-items: center;
     justify-content: center;
   }
-  
-  
   /* Main container */
   .auth-wrapper {
     width: 90%;
@@ -155,7 +154,7 @@
     font-weight: bold;
   }
   /* Google Fonts */
-@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
+
 
 /* Cursor Container */
 .cursor {
