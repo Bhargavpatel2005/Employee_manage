@@ -2,9 +2,13 @@
 body{
     background-image: url("/images/hero-bg.jpg");
     height: auto;
-    width: 100ch;
+    /* width: 100ch; */
     background-position: center;
     background-size: cover;
+    display: flex;
+    justify-content: left;
+    width: 93.5%;
+    margin-left: 5.5%;
 }
 body::before {
     content: "";

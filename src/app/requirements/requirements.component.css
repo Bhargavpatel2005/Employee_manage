@@ -1,11 +1,16 @@
+.container{
+    width: 100%;
+}
+
 .header {
     display:flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
-    border-radius: 8px;
+    padding: 0 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-left: 65px;
+    width: 99%;
+    height: 35px;
     background-color: #c2c8d6;
 }
 
@@ -20,6 +25,31 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 10px;
+}
+
+.searchbar{
+    display: flex;
+
+}
+
+.material-symbols-outlined.exp{
+    display: flex;
+    background-color: #ffffff;
+    align-items: center;
+    border-radius: 7px 0  0 7px;
+    padding-left: 5px;
+}
+.searchbar .search, .custom .fil-opt {
+    border: 0;
+    border-radius: 0 7px 7px 0;
+    outline: none;
+    box-shadow: none;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 0;
+}
+.grp{
+    display: flex;
 }
 
 .filter, .post-job {
@@ -37,7 +67,6 @@
 .post-job {
     background-color: #5cb85c;
     color: white;
-    margin-left: 10px;
 }
 
 .job-info {
@@ -46,9 +75,12 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-left:65px;
     background-color: #c2c8d6;
+    width: 91.4vw;
     justify-content: space-between;
+    display: flex;
+    align-items: center;
+    
 }
 .button{
     justify-content: end;
@@ -61,6 +93,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 20px;
 }
 
 .sort select {
@@ -76,4 +109,11 @@
     background: none;
     border: none;
     font-size: 20px;
+}
+
+.custom{
+    display: flex;
+    align-items: center;
+    border-radius: 7px 0  0 7px;
+    padding-left: 5px;
 }
