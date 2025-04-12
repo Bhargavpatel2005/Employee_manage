@@ -4,7 +4,7 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-requirements',
-  imports: [HeaderComponent, SidebarComponent],
+  imports: [ SidebarComponent],
   templateUrl: './requirements.component.html',
   styleUrl: './requirements.component.css'
 })

@@ -4,7 +4,7 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, SidebarComponent],
+  imports: [ SidebarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
