@@ -1,0 +1,96 @@
+/* Container styling */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    margin-left: 150px;
+    padding: 20px;
+    background: linear-gradient(to right, #baceec, #e4e6e9, #baceec, #e4e6e9, #baceec);
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Headings */
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  /* Flexbox row for field grouping */
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+    min-width: 200px;
+    max-width: 320px;
+  }
+  
+  /* Full width description */
+  .description-group {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  /* CKEditor specific styles */
+  .description-group ::ng-deep .ck-editor__editable {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .description-group ::ng-deep .ck-editor__editable:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Label styling */
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  /* Input and select field styling */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    display: block;
+    width: 15%;
+    margin-left: 1%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #3a6d18;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .cl-btn{
+    background-color: #e93535;
+  }
+
+.button{
+  display: flex;
+  justify-content: end;
+}

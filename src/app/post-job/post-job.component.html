@@ -1,1 +1,111 @@
 <app-sidebar></app-sidebar>
+
+<div class="container">
+    <h1>Post Job</h1>
+    <form (ngSubmit)="postJob()">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="job-department">Job Department</label>
+                <select [(ngModel)]="job.job_department" name="job-department" id="job-department" required>
+                    <option value="" disabled selected>Select Job Department</option>
+                    <option value="HR">HR</option>
+                    <option value="IT">IT</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Customer Service">Customer Service</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="job-title">Job Title</label>
+                <select [(ngModel)]="job.job_title" name="job-title" id="job-title" required>
+                    <option value="" disabled selected>Select Job Title</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Product Manager">Product Manager</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="job-position">Job Position</label>
+                <select [(ngModel)]="job.job_position" name="job-position" id="job-position" required>
+                    <option value="" disabled selected>Select Job Position</option>
+                    <option value="Mid level">Mid level</option>
+                    <option value="Senior level">Senior level</option>
+                    <option value="Junior level">Junior level</option>
+                    <option value="Intern">Intern</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="job-skills">Job Skills</label>
+                <input type="text" class="form-control" id="job-skills" name="job-skills" [(ngModel)]="job.job_skills"
+                    required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="job-experience">Job Experience</label>
+                <input type="number" class="form-control" id="job-experience" name="job-experience"
+                    [(ngModel)]="job.job_experience" required>
+            </div>
+
+            <div class="form-group">
+                <label for="job-type">Job Type</label>
+                <select [(ngModel)]="job.job_type" name="job-type" id="job-type" required>
+                    <option value="" disabled selected>Select Job Type</option>
+                    <option value="Full time">Full time</option>
+                    <option value="Part time">Part time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Intern">Intern</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="job-education">Job Education</label>
+                <select [(ngModel)]="job.job_education" name="job-education" id="job-education" required>
+                    <option value="" disabled selected>Select Job Education</option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
+                    <option value="Doctorate">Doctorate</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="job-location">Job Location</label>
+                <input type="text" class="form-control" id="job-location" name="job-location"
+                    [(ngModel)]="job.job_location" required>
+            </div>
+            <div class="form-group description-group">
+
+                <label for="job-description">Job Description</label>
+                <quill-editor [(ngModel)]="job.job_description" name="editorContent" [styles]="{ height: '200px' }"
+                    [placeholder]="'Start typing here...'"></quill-editor>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="job-salary">Job Salary</label>
+                <input type="number" class="form-control" id="job-salary" name="job-salary" [(ngModel)]="job.job_salary"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="job-status">Job Status</label>
+                <select [(ngModel)]="job.job_status" name="job-status" id="job-status" required>
+                    <option value="" disabled selected>Select Job Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+        </div>
+        <div class="button">
+
+            <button type="reset" class="cl-btn btn-primary">Clear</button>
+            <button mat-button class="btn btn-primary" (click)="confirm()">Post Job</button>
+        </div>
+    </form>
+</div>

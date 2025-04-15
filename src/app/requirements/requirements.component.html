@@ -36,274 +36,39 @@
 
     </div>
 
-    <div class="job-listings">
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
+    
+        <div class="job-listings">
+            <ng-container *ngFor="let job of jobs">
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="job-icon">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <span class="status-badge active">Active</span>
                 </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-
-
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
+                <h3 class="job-title">{{job.job_title}}</h3>
+                <p class="job-department">{{job.job_department}}</p>
+                <div class="job-details">
+                    <span class="detail-item">
+                        <span class="material-symbols-outlined">work</span>
+                        {{job.job_position}}
+                    </span>
+                    <span class="detail-item">
+                        <span class="material-symbols-outlined">schedule</span>
+                        {{job.job_experience}} Years Experience
+                    </span>
                 </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
+                <div class="salary-range">{{job.job_salary}}</div>
+                <div class="job-type-tags">
+                    <span class="job-tag">{{job.job_type}}</span>
+                    <span class="job-tag">{{job.job_location}}</span>
                 </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">groups</span>
+                <div class="applicants-count">
+                    <span class="material-symbols-outlined">group</span>
+                    {{job.job_applicants}} Applicants
                 </div>
-                <span class="status-badge active">Active</span>
             </div>
-            <h3 class="job-title">HR Manager</h3>
-            <p class="job-department">Human Resources</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Senior-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    8+ Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$90,000 - $110,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Hybrid</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                30 Applicants
-            </div>
+        </ng-container>
         </div>
-<div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
-                </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
-                </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
-                </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-        <div class="job-card">
-            <div class="job-header">
-                <div class="job-icon">
-                    <span class="material-symbols-outlined">code</span>
-                </div>
-                <span class="status-badge active">Active</span>
-            </div>
-            <h3 class="job-title">Software Developer</h3>
-            <p class="job-department">Engineering</p>
-            <div class="job-details">
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">work</span>
-                    Mid-level
-                </span>
-                <span class="detail-item">
-                    <span class="material-symbols-outlined">schedule</span>
-                    3-5 Years Experience
-                </span>
-            </div>
-            <div class="salary-range">$80,000 - $100,000</div>
-            <div class="job-type-tags">
-                <span class="job-tag">Full-time</span>
-                <span class="job-tag">Remote</span>
-            </div>
-            <div class="applicants-count">
-                <span class="material-symbols-outlined">group</span>
-                120 Applicants
-            </div>
-        </div>
-        
-    </div>
-
+    
 </div>
