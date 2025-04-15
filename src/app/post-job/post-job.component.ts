@@ -1,70 +1,76 @@
-import { Component, OnInit } from '@angular/core';
-import { SidebarComponent } from "../sidebar/sidebar.component";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AllApiService } from '../services/api/all-api.service';
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { Job } from '../interfaces/interfaces';
+import { FormsModule, NgModel, NgModelGroup } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-post-job',
-
-  imports: [SidebarComponent, FormsModule, CommonModule,
-    ReactiveFormsModule,QuillModule
-  ],
+  imports:[NgIf,FormsModule,SidebarComponent, QuillModule,],
   templateUrl: './post-job.component.html',
-  styleUrl: './post-job.component.css',
-
+  styleUrl: './post-job.component.css'
 })
-export class PostJobComponent implements OnInit {
+export class PostJobComponent {
+  successMessage: string = '';
+  errorMessage: string = '';
+
   job: Job = {
     id: 0,
     job_title: '',
     job_department: '',
     job_position: '',
-    job_experience: 0,
+    job_experience: '',
     job_type: '',
     job_education: '',
     job_skills: '',
     job_description: '',
     job_location: '',
-    job_salary: 0,
+    job_salary: '',
     job_status: '',
     job_created_at: new Date()
   };
-  constructor(private apiService: AllApiService) { }
 
-  ngOnInit() {
-    // Initialize any required setup
+  constructor(private apiService: AllApiService, private router: Router) {}
+
+  postJob(form: any) {
+    if (form.valid) {
+      this.apiService.postJob(this.job).subscribe({
+        next: () => {
+          this.successMessage = 'Job posted successfully!';
+          const activities = JSON.parse(localStorage.getItem('recentActivities') || '[]');
+          activities.unshift({
+            type: 'Job',
+            action: 'Posted',
+            timestamp: new Date()
+          });
+          localStorage.setItem('recentActivities', JSON.stringify(activities.slice(0, 10)));
+
+          setTimeout(() => {
+            this.successMessage = '';
+            this.router.navigate(['/requirements']);
+          }, 2000);
+
+          form.resetForm();
+        },
+        error: (err) => {
+          this.errorMessage = 'Error posting job';
+          console.error(err);
+        }
+      });
+    } else {
+      // Mark all controls as touched to show errors
+      Object.values(form.controls).forEach((control: any) => {
+        control.markAsTouched();
+        control.updateValueAndValidity?.(); // optional
+      });
+    }
+  }
+  clearSuccessMessage() {
+    this.successMessage = '';
   }
 
-  postJob() {
-    this.apiService.postJob(this.job).subscribe({
-      next: (response) => {
-        console.log('Job posted successfully:', response);
-        // Reset form
-        this.job = {
-          id: 0,
-          job_title: '',
-          job_department: '',
-          job_position: '',
-          job_experience: 0,
-          job_type: '',
-          job_education: '',
-          job_skills: '',
-          job_description: '',
-          job_location: '',
-          job_salary: 0,
-          job_status: '',
-          job_created_at: new Date()
-        };
-      },
-      error: (error) => {
-        console.error('Error posting job:', error);
-      }
-    });
-  }
-  confirm() {
-    
- }
+
 }

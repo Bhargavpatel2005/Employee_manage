@@ -8,7 +8,7 @@
     border-radius: 12px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   }
-  
+
   /* Headings */
   h1 {
     text-align: center;
@@ -16,7 +16,7 @@
     font-size: 28px;
     color: #333;
   }
-  
+
   /* Flexbox row for field grouping */
   .form-row {
     display: flex;
@@ -24,19 +24,19 @@
     gap: 20px;
     margin-bottom: 20px;
   }
-  
+
   .form-group {
     flex: 1;
     min-width: 200px;
     max-width: 320px;
   }
-  
+
   /* Full width description */
   .description-group {
     flex: 1 1 100%;
     max-width: 100%;
   }
-  
+
   /* CKEditor specific styles */
   .description-group ::ng-deep .ck-editor__editable {
     min-height: 200px;
@@ -46,12 +46,12 @@
     border: 1px solid #ccc;
     border-radius: 6px;
   }
-  
+
   .description-group ::ng-deep .ck-editor__editable:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
-  
+
   /* Label styling */
   label {
     font-weight: 600;
@@ -59,7 +59,7 @@
     margin-bottom: 8px;
     color: #555;
   }
-  
+
   /* Input and select field styling */
   input[type="text"],
   input[type="number"],
@@ -71,7 +71,7 @@
     border-radius: 6px;
     box-sizing: border-box;
   }
-  
+
   /* Button Styling */
   .btn-primary {
     display: block;
@@ -89,8 +89,67 @@
   .cl-btn{
     background-color: #e93535;
   }
-
+  .error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+  
 .button{
   display: flex;
   justify-content: end;
+}
+
+/* Toast Styles */
+.toast-container {
+  z-index: 9999;
+}
+
+.toast {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
+  min-width: 300px;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideInRight 0.3s ease forwards;
+}
+
+.toast.success {
+  border-left: 4px solid #28a745;
+}
+
+.toast.error {
+  border-left: 4px solid #dc3545;
+}
+
+.toast-header {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 1rem;
+}
+
+.toast-header.success {
+  color: #28a745;
+}
+
+.toast-header.error {
+  color: #dc3545;
+}
+
+.toast-body {
+  padding: 1rem;
+  color: #333;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
