@@ -36,9 +36,9 @@
 
     </div>
 
-    
-        <div class="job-listings">
-            <ng-container *ngFor="let job of jobs">
+
+    <div class="job-listings">
+        <ng-container *ngFor="let job of jobs">
             <div class="job-card">
                 <div class="job-header">
                     <div class="job-icon">
@@ -58,7 +58,7 @@
                         {{job.job_experience}} Years Experience
                     </span>
                 </div>
-                <div class="salary-range">{{job.job_salary}}</div>
+                <div class="salary-range">{{job.job_salary.min_salary}} - {{job.job_salary.max_salary }}</div>
                 <div class="job-type-tags">
                     <span class="job-tag">{{job.job_type}}</span>
                     <span class="job-tag">{{job.job_location}}</span>
@@ -69,6 +69,6 @@
                 </div>
             </div>
         </ng-container>
-        </div>
-    
+    </div>
+
 </div>

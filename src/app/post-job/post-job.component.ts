@@ -6,10 +6,14 @@ import { FormsModule, NgModel, NgModelGroup } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { QuillModule } from 'ngx-quill';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
+import { WarnigComponentComponent } from './warnig-component/warnig-component.component';
 
 @Component({
   selector: 'app-post-job',
-  imports:[NgIf,FormsModule,SidebarComponent, QuillModule,],
+  imports:[NgIf,FormsModule,SidebarComponent, QuillModule,MatDialogModule, MatDialogModule],
   templateUrl: './post-job.component.html',
   styleUrl: './post-job.component.css'
 })
@@ -28,12 +32,14 @@ export class PostJobComponent {
     job_skills: '',
     job_description: '',
     job_location: '',
-    job_salary: '',
+    job_min_salary: 0,
+    job_max_salary: 0,
     job_status: '',
     job_created_at: new Date()
   };
 
-  constructor(private apiService: AllApiService, private router: Router) {}
+  constructor(private apiService: AllApiService, private router: Router,
+    public dialog: MatDialog) { }
 
   postJob(form: any) {
     if (form.valid) {
@@ -47,12 +53,6 @@ export class PostJobComponent {
             timestamp: new Date()
           });
           localStorage.setItem('recentActivities', JSON.stringify(activities.slice(0, 10)));
-
-          setTimeout(() => {
-            this.successMessage = '';
-            this.router.navigate(['/requirements']);
-          }, 2000);
-
           form.resetForm();
         },
         error: (err) => {
@@ -61,16 +61,41 @@ export class PostJobComponent {
         }
       });
     } else {
-      // Mark all controls as touched to show errors
       Object.values(form.controls).forEach((control: any) => {
         control.markAsTouched();
-        control.updateValueAndValidity?.(); // optional
+        control.updateValueAndValidity?.();
       });
     }
   }
-  clearSuccessMessage() {
-    this.successMessage = '';
+
+  openDialog(form: any) {
+    if (form.valid) {
+      const dialogRef = this.dialog.open(DialogContentComponent, {
+        width: '600px',
+        data: this.job
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'submit') {
+          this.postJob(form);
+        }
+      });
+    } else {
+      Object.values(form.controls).forEach((control: any) => {
+        control.markAsTouched();
+        control.updateValueAndValidity?.();
+      });
+      this.openWarningDialog();
+    }
   }
 
 
+  openWarningDialog() {
+    const dialogRef = this.dialog.open(WarnigComponentComponent, {
+      width: '400px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Warning dialog closed');
+    });
+  }
 }

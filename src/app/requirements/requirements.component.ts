@@ -18,12 +18,11 @@ export class RequirementsComponent {
   ngOnInit() {
     this.getJobs();
   }
-
   getJobs() {
     this.apiService.getJobs().subscribe((data) => {
       console.log(data);
-      this.jobs = data;
+      this.jobs = data
     });
   }
-  
+
 }

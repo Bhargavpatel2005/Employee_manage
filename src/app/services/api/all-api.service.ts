@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Job } from '../../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class AllApiService {
     return this.http.get(`${this.baseUrl}${id}/`);
   } 
 
-  postJob(job: any): Observable<any> {
-    return this.http.post(this.baseUrl, job);
+  postJob(job: any): Observable<Job> {
+    return this.http.post<Job>(this.baseUrl, job);
   }
 
   updateJob(id: number, job: any): Observable<any> {

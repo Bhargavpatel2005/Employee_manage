@@ -21,7 +21,7 @@ export class LoginComponent {
   errorMessage: string = '';
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private http: HttpClient,
@@ -65,10 +65,10 @@ export class LoginComponent {
   get email() {
     return this.loginForm.get('email')!;
   }
-  
+
   get password() {
     return this.loginForm.get('password')!;
   }
-  
-  
+
+
 }
