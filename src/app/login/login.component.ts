@@ -7,8 +7,6 @@ import { NgIf } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -37,7 +35,7 @@ export class LoginComponent {
       const token = sessionStorage.getItem('token');
       console.log('Token:', token);
     }
-  }
+  } 
 
   isLoading = false;
   onLogin() {
@@ -61,6 +59,7 @@ export class LoginComponent {
     }else {
       this.loginForm.markAllAsTouched();
     }
+    this.router.navigate(['/'], { replaceUrl: true });
   }
   get email() {
     return this.loginForm.get('email')!;
@@ -69,6 +68,5 @@ export class LoginComponent {
   get password() {
     return this.loginForm.get('password')!;
   }
-
-
 }
+  

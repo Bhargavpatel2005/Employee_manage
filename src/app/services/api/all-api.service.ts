@@ -10,7 +10,7 @@ export class AllApiService {
 
   private baseUrl = 'http://127.0.0.1:8000/api/post_job/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getJobs(): Observable<any> {
     return this.http.get(this.baseUrl);
@@ -20,11 +20,11 @@ export class AllApiService {
     return this.http.get(`${this.baseUrl}${id}/`);
   } 
 
-  postJob(job: any): Observable<Job> {
+  postJob(job: Job): Observable<Job> {
     return this.http.post<Job>(this.baseUrl, job);
   }
 
-  updateJob(id: number, job: any): Observable<any> {
+  updateJob(id: number, job: Job): Observable<any> {
     return this.http.put(`${this.baseUrl}${id}/`, job);
   } 
 

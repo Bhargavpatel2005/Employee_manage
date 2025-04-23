@@ -4,7 +4,7 @@ body{
     height: auto;
     background-size: cover;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     width: 93.5%;
     margin-left: 5.5%;
 }

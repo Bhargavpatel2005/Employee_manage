@@ -1,15 +1,50 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  
+  authenticated = false;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    if (!sessionStorage.getItem('token')) {
+      window.location.replace('/login');
+    }
+  }
+
+  logout() {
+    this.http.post('http://localhost:8000/api/logout/', {}, { withCredentials: true }).subscribe({
+      next: () => {
+        this.logoutmessage();
+        this.clearStorageAndRedirect();
+        window.location.replace('/login');
+      },
+      error: (err) => {
+        console.error('Logout error:', err);
+        this.clearStorageAndRedirect();
+      }
+    });
+  }
+  logoutmessage(){
+    
+  }
+
+  private clearStorageAndRedirect() {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.authenticated = false;
+    if ('caches' in window) {
+      caches.keys().then((names) => {
+        names.forEach((name) => caches.delete(name));
+      });
+    }
+    window.location.replace('/login');
+  }
 }

@@ -2,14 +2,12 @@
 /* Global Styles */
 
 .center-page {
-  margin-top: 3%;
-    margin-left: 25%;
-    width: 60vw;
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  margin-top: 15%;
+  margin-right: 3%;
+  width: 60vw;
+  align-items: center;
+  justify-content: center;
+}
   /* Main container */
   .auth-wrapper {
     width: 90%;
@@ -28,7 +26,7 @@
     display: flex;
     backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.1);
-    background: url('/images/logo-dark.png') no-repeat center center/cover;
+    background: url('/images/logo-dark.png') no-repeat center center/cover ;
   }
   
   /* LEFT SIDE */
@@ -142,7 +140,7 @@
     background: linear-gradient(to right, #60d3e7, #3d4de4);
   }
   
-  /* Switch Link */
+  
   .switch {
     margin-top: 20px;
     font-size: 13px;
@@ -154,7 +152,6 @@
     text-decoration: none;
     font-weight: bold;
   }
-  /* Google Fonts */
 
 
 /* Cursor Container */
@@ -171,7 +168,7 @@
   font-family: 'Anonymous Pro', monospace;
 }
 
-/* Animation Trigger */
+
 .typewriter-animation {
   animation:
     typewriter 3.5s steps(50) 1s 1 normal both,
@@ -192,7 +189,7 @@
 }
 
   
-  /* Responsive */
+  
   @media (max-width: 768px) {
     .auth-container {
       flex-direction: column;
@@ -200,4 +197,112 @@
   }
 .error{
   color: rgb(238, 107, 107); 
+}
+
+
+@media screen and (max-width: 768px) {
+  .center-page {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+  }
+
+  .auth-wrapper {
+    width: 100%;
+    max-width: none;
+  }
+
+  .auth-container {
+    flex-direction: column;
+    background-size: cover;
+  }
+
+  .auth-left {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .auth-left h2 {
+    font-size: 22px;
+  }
+
+  .auth-left h3 {
+    font-size: 18px;
+  }
+
+  .auth-right {
+    padding: 25px;
+  }
+
+  .input-group {
+    margin-right: 0;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  .cursor {
+    width: 100%;
+    font-size: 24px;
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .auth-left h2 {
+    font-size: 50px;
+  }
+
+  .auth-left h3 {
+    font-size: 16px;
+  }
+
+  .auth-left p {
+    font-size: 12px;
+  }
+
+  .auth-right h3 {
+    font-size: 22px;
+  }
+
+  .input-group input {
+    padding: 10px 35px 10px 10px;
+    font-size: 13px;
+  }
+
+  .auth-right button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .cursor {
+    font-size: 20px;
+  }
+}
+
+/* Landscape mode */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  .center-page {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .auth-container {
+    flex-direction: row;
+  }
+
+  .auth-left, .auth-right {
+    padding: 20px;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
 }

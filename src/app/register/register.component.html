@@ -1,0 +1,19 @@
+<h2>Register</h2>
+<div class="register-form">
+<form #regForm="ngForm" (ngSubmit)="register(regForm)">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput name="email" [(ngModel)]="email" required email>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput name="password" [(ngModel)]="password" type="password" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Register</button>
+
+  <p *ngIf="error" style="color:red">{{ error }}</p>
+</form>
+</div>

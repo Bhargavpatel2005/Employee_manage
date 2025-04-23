@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../header/header.component";
 import { SidebarComponent } from "../sidebar/sidebar.component";
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,4 +11,10 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 })
 export class HomeComponent {
 
+  constructor(private router: Router, private authService: AuthService) { }
+  ngOnInit() {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+    }
+  } 
 }

@@ -2,64 +2,68 @@
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
-    <aside class="sidebar">
-        <div class="logo">
-            <img src="/images/logo1.jpg" alt="logo">
-            <h2>BNBrun</h2>
-        </div>
-        <ul class="links">
-            <h4>Main Menu</h4>
-            <li>
-                <span class="material-symbols-outlined">dashboard</span>
-                <a routerLink="/">Dashboard</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">show_chart</span>
-                <a routerLink="/requirements">Recruitment</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">currency_rupee</span>
-                <a routerLink="#">Payroll & salaries</a>
-            </li>
-            <hr>
-            <h4>Advanced</h4>
-            <li>
-                <span class="material-symbols-outlined">id_card</span>
-                <a routerLink="#">Attendances</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">door_open</span>
-                <a routerLink="#">Leave</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">description</span>
-                <a routerLink="#">Documents</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">trending_up</span>
-                <a routerLink="#">parfomance</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">gavel</span>
-                <a routerLink="#">polices</a>
-            </li>
-            <hr>
-            <h4>Account</h4>
-            <li>
-                <span class="material-symbols-outlined">diversity_2</span>
-                <a routerLink="#">Engagement</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">mail</span>
-                <a routerLink="#">Message</a>
-            </li>
-            <li>
-                <span class="material-symbols-outlined">settings</span>
-                <a routerLink="#">Settings</a>
-            </li>
-            <li class="logout-link">
-                <span class="material-symbols-outlined">logout</span>
-                <a routerLink='/login'>Logout</a>
-            </li>
-        </ul>
-    </aside>
+<aside class="sidebar">
+    <div class="logo">
+        <img src="/images/logo1.jpg" alt="logo">
+        <h2>BNBrun</h2>
+    </div>
+    <ul class="links">
+        <h4>Main Menu</h4>
+        <li>
+            <span class="material-symbols-outlined">dashboard</span>
+            <a routerLink="/home">Dashboard</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">mail</span>
+            <a routerLink="/mail">Mail</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">show_chart</span>
+            <a routerLink="/requirements">Recruitment</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">currency_rupee</span>
+            <a routerLink="#">Payroll & salaries</a>
+        </li>
+        <hr>
+        <h4>Advanced</h4>
+        <li>
+            <span class="material-symbols-outlined">id_card</span>
+            <a routerLink="#">Attendances</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">door_open</span>
+            <a routerLink="#">Leave</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">description</span>
+            <a routerLink="#">Documents</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">trending_up</span>
+            <a routerLink="#">parfomance</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">gavel</span>
+            <a routerLink="#">polices</a>
+        </li>
+        <hr>
+        <h4>Account</h4>
+        <li>
+            <span class="material-symbols-outlined">diversity_2</span>
+            <a routerLink="#">Engagement</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">mail</span>
+            <a routerLink="#">Message</a>
+        </li>
+        <li>
+            <span class="material-symbols-outlined">settings</span>
+            <a routerLink="#">Settings</a>
+        </li>
+        <li class="logout-link">
+            <span class="material-symbols-outlined">logout</span>
+            <a (click)="logout()">Logout</a>
+        </li>
+    </ul>
+</aside>

@@ -1,47 +1,39 @@
-import { Injectable ,Inject, PLATFORM_ID} from '@angular/core';
-import { of, throwError } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
+  private apiUrl = 'http://127.0.0.1:8000/api';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
-  login(email: string, password: string) {
-    const validEmail = 'admin@gmail.com';
-    const validPassword = '123456';
-
-    if (email === validEmail && password === validPassword) {
-      const fakeToken = 'fake-jwt-token';
-      return of({ token: fakeToken }).pipe(
-        delay(1000),
-        tap(res => {
-          if (isPlatformBrowser(this.platformId)) {
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login/`, { email, password }).pipe(
+      tap((res: any) => {
+        if (isPlatformBrowser(this.platformId)) {
           sessionStorage.setItem('token', res.token);
-          }
-        })
-      );
-    } else {
-      return throwError(() => ({ error: { message: 'Invalid email or password' } }));
-    }
+        }
+      })
+    );
+  }
+  register(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register/`, { email, password });
   }
 
-  logout() {
+  logout(): void {
     if (isPlatformBrowser(this.platformId)) {
-      sessionStorage.removeItem('token');
+      sessionStorage.clear();
     }
+    window.location.href = '/login';
   }
 
-  isLoggedIn() {
-    if (isPlatformBrowser(this.platformId)) {
-      return !!sessionStorage.getItem('token');
-    }
-    return false;
-  
+  isLoggedIn(): boolean {
+    return isPlatformBrowser(this.platformId) && !!sessionStorage.getItem('token');
   }
-  
 }

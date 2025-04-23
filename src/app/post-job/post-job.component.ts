@@ -2,20 +2,21 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AllApiService } from '../services/api/all-api.service';
 import { Job } from '../interfaces/interfaces';
-import { FormsModule, NgModel, NgModelGroup } from '@angular/forms';
-import { NgIf } from '@angular/common';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { QuillModule } from 'ngx-quill';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
 import { WarnigComponentComponent } from './warnig-component/warnig-component.component';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { QuillModule } from 'ngx-quill';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-post-job',
-  imports:[NgIf,FormsModule,SidebarComponent, QuillModule,MatDialogModule, MatDialogModule],
+  imports: [NgIf, FormsModule, SidebarComponent, QuillModule, MatDialogModule, MatDialogModule],
   templateUrl: './post-job.component.html',
-  styleUrl: './post-job.component.css'
+  styleUrl: './post-job.component.css',
 })
 export class PostJobComponent {
   successMessage: string = '';
@@ -32,14 +33,17 @@ export class PostJobComponent {
     job_skills: '',
     job_description: '',
     job_location: '',
-    job_min_salary: 0,
-    job_max_salary: 0,
+    job_min_salary: '',
+    job_max_salary: '',
     job_status: '',
-    job_created_at: new Date()
+    job_created_at: new Date(),
   };
 
-  constructor(private apiService: AllApiService, private router: Router,
-    public dialog: MatDialog) { }
+  constructor(
+    private apiService: AllApiService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   postJob(form: any) {
     if (form.valid) {
@@ -61,10 +65,7 @@ export class PostJobComponent {
         }
       });
     } else {
-      Object.values(form.controls).forEach((control: any) => {
-        control.markAsTouched();
-        control.updateValueAndValidity?.();
-      });
+      this.markFormTouched(form);
     }
   }
 
@@ -81,14 +82,10 @@ export class PostJobComponent {
         }
       });
     } else {
-      Object.values(form.controls).forEach((control: any) => {
-        control.markAsTouched();
-        control.updateValueAndValidity?.();
-      });
+      this.markFormTouched(form);
       this.openWarningDialog();
     }
   }
-
 
   openWarningDialog() {
     const dialogRef = this.dialog.open(WarnigComponentComponent, {
@@ -96,6 +93,13 @@ export class PostJobComponent {
     });
     dialogRef.afterClosed().subscribe(() => {
       console.log('Warning dialog closed');
+    });
+  }
+
+  private markFormTouched(form: any) {
+    Object.values(form.controls).forEach((control: any) => {
+      control.markAsTouched();
+      control.updateValueAndValidity?.();
     });
   }
 }

@@ -347,3 +347,121 @@
     font-size: 14px;
     margin-top: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .header {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .job-info {
+    width: 95%;
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .grp {
+    width: 100%;
+  }
+
+  .sort {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .searchbar {
+    width: 100%;
+  }
+
+  .search {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .custom {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .fil-opt {
+    width: 100% !important;
+  }
+
+  .post-job {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .job-listings {
+    width: 95%;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .job-card {
+    width: auto;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .job-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .job-type-tags {
+    flex-wrap: wrap;
+  }
+
+  /* Adjust font sizes for mobile */
+  .job-title {
+    font-size: 16px;
+  }
+
+  .job-department {
+    font-size: 13px;
+  }
+
+  .detail-item {
+    font-size: 12px;
+  }
+
+  .salary-range {
+    font-size: 14px;
+  }
+}
+
+/* Add styles for extra small screens */
+@media screen and (max-width: 480px) {
+  .header {
+    width: 92%;
+  }
+
+  .job-info {
+    width: 92%;
+  }
+
+  .job-listings {
+    width: 92%;
+    padding: 5px;
+  }
+
+  .job-card {
+    padding: 12px;
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+}
