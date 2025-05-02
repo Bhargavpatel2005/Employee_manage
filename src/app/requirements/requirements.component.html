@@ -38,14 +38,16 @@
 
 
     <div class="job-listings">
-        <ng-container *ngFor="let job of jobs">
+        <ng-container *ngFor="let job of jobs track by index">
             <div class="job-card">
                 <div class="job-header">
                     <div class="job-icon">
                         <span class="material-symbols-outlined">code</span>
                     </div>
+
                     <span class="status-badge active">Active</span>
-                </div>
+                    </div>
+                    Id : {{jobs.indexOf(job) + 1}}
                 <h3 class="job-title">{{job.job_title}}</h3>
                 <p class="job-department">{{job.job_department}}</p>
                 <div class="job-details">
@@ -58,14 +60,14 @@
                         {{job.job_experience}} Years Experience
                     </span>
                 </div>
-                <div class="salary-range">{{job.job_salary.min_salary}} - {{job.job_salary.max_salary }}</div>
+                <div class="salary-range">{{job.job_min_salary}} - {{job.job_max_salary }}</div>
                 <div class="job-type-tags">
                     <span class="job-tag">{{job.job_type}}</span>
                     <span class="job-tag">{{job.job_location}}</span>
                 </div>
                 <div class="applicants-count">
                     <span class="material-symbols-outlined">group</span>
-                    {{job.job_applicants}} Applicants
+                    <!-- {{job.job_applicants}} Applicants -->
                 </div>
             </div>
         </ng-container>

@@ -1,5 +1,5 @@
 .container {
-  max-width: 900px;
+  max-width: 90%;
   margin: 30px auto;
   padding: 20px;
   background: linear-gradient(to right, #baceec, #e4e6e9, #baceec, #e4e6e9, #baceec);
@@ -66,7 +66,7 @@ select {
 
 .btn-primary {
   display: block;
-  width: 15%;
+  width: 10%;
   margin-left: 1%;
   padding: 12px;
   font-size: 16px;
@@ -77,6 +77,21 @@ select {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
+.btn-primary-his {
+  display: block;
+  width: 10%;
+  margin-left: 1%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #296269;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 
 .cl-btn {
   background-color: #e93535;
@@ -91,4 +106,64 @@ select {
 .button {
   display: flex;
   justify-content: end;
+}
+
+
+/* Success Toast */
+.toast.success {
+  animation: slideInRight 0.5s ease, fadeOut 0.5s ease 1.5s forwards;
+}
+
+.toast.success .toast-header {
+  background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem;
+}
+
+.toast.success .toast-header i {
+  color: #fff;
+}
+
+.toast.success .toast-body {
+  padding: 1.2rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+/* Error Toast */
+.toast.error {
+  animation: slideInRight 0.5s ease, fadeOut 0.5s ease 1.5s forwards;
+}
+
+.toast.error .toast-header {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem;
+}
+
+.toast.error .toast-header i {
+  color: #fff;
+}
+
+.toast.error .toast-body {
+  padding: 1.2rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+input[type="date"] {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  width: 60%;
+}
+.required {
+  color: red;
+}
+.error-text {
+  color: red;
+  font-size: 0.85rem;
 }

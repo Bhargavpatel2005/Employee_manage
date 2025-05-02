@@ -4,6 +4,7 @@ import { SidebarComponent } from "../sidebar/sidebar.component";
 import { RouterLink } from '@angular/router';
 import { AllApiService } from '../services/api/all-api.service';
 import { NgFor } from '@angular/common';
+import { Job } from '../interfaces/interfaces';
 @Component({
   selector: 'app-requirements',
   imports: [ SidebarComponent,RouterLink,NgFor],
@@ -11,7 +12,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './requirements.component.css'
 })
 export class RequirementsComponent {
-  jobs: any[] = [];
+  jobs: Job[] = [];
 
   constructor(private apiService: AllApiService) { }
 

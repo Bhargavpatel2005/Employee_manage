@@ -1,0 +1,135 @@
+<app-sidebar></app-sidebar>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<h2>Post Job History Table</h2>
+<div class="main">
+  <!-- Left: Search Input -->
+  <div class="search-container">
+    <div class="input-group search-input-group">
+      <span class="input-group-text search-icon">
+        <i class="fas fa-search"></i>
+      </span>
+      <input type="text" class="form-control search-field"
+             placeholder="Search jobs by title, department, or position"
+             [(ngModel)]="searchTerm" (ngModelChange)="onSearch()">
+    </div>
+  </div>
+
+  <!-- Right: Filter Dropdown
+  <div class="filter-wrapper">
+    <select class="form-select filter-select">
+      <option selected>Filter by Department</option>
+      <option value="HR">HR</option>
+      <option value="Engineering">Engineering</option>
+      <option value="Marketing">Marketing</option>
+    </select>
+  </div> -->
+</div>
+
+<!-- Table -->
+<div class="table-container">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Job Title</th>
+        <th>Job Department</th>
+        <th>Job Position</th>
+        <th>Job Experience</th>
+        <th>Job Type</th>
+        <th>Job Created At</th>
+        <th>Job Salary</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paginatedJobs; let i = index">
+        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+        <td>{{ item.job_title }}</td>
+        <td>{{ item.job_department }}</td>
+        <td>{{ item.job_position }}</td>
+        <td>{{ item.job_experience }}</td>
+        <td>{{ item.job_type }}</td>
+        <td>{{ item.job_created_at }}</td>
+        <td>{{ item.job_min_salary }} - {{ item.job_max_salary }}</td>
+        <td>{{ item.job_status }}</td>
+        <td>
+          <button type="button" (click)="viewjob(item)" style="border: none; background: none; padding: 0; cursor: pointer;">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+          <button type="button" (click)="editjob(item)" style="border: none; background: none; padding: 0; cursor: pointer;">
+            <span class="material-symbols-outlined">edit</span>
+          </button>
+          <span class="material-symbols-outlined">delete</span>
+        </td>
+      </tr>
+      <tr *ngIf="paginatedJobs.length === 0">
+        <td colspan="10" class="text-center text-muted">No job postings found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Pagination -->
+<nav *ngIf="totalPages> 1" aria-label="Job Pagination" class="mt-3">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button class="page-link" (click)="previousPage()">Previous</button>
+    </li>
+    <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.active]="currentPage === i + 1">
+      <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button class="page-link" (click)="nextPage()">Next</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- Job Details Section -->
+<div *ngIf="selectedJob" class="mt-4">
+  <h2>Post Job Details</h2>
+  <div class="card p-3">
+
+    <div><strong>Status </strong>
+      @if (selectedJob.job_status == "Active") {
+        <span style="color: green;"> {{ selectedJob.job_status }}<sup class="glow">*</sup></span>
+      }@else{
+        <span style="color: red;"> {{ selectedJob.job_status }}<sup class="glow">*</sup></span>
+      }
+    </div>
+    <div><strong>Department:</strong> {{ selectedJob.job_department }}</div>
+    <div><strong>Location:</strong> {{ selectedJob.job_location }}</div>
+    <div><strong>Level:</strong> {{ selectedJob.job_position }}</div>
+    <div><strong>Work Experience:</strong> {{ selectedJob.job_experience }} years</div>
+    <div><strong>Employment Type:</strong> {{ selectedJob.job_type }}</div>
+    <!-- <div><strong>Work Type:</strong> Hybrid</div> -->
+    <div><strong>Salary:</strong> ₹{{ selectedJob.job_min_salary }} - ₹{{ selectedJob.job_max_salary }}</div>
+  </div>
+
+  <div class="mt-3">
+    <h3>Job Description</h3>
+    <p>{{selectedJob.job_description}}></p>
+
+    <h3>Qualifications</h3>
+    <ul>
+      <li>{{ selectedJob.job_education }}</li>
+    </ul>
+
+    <h3>Responsibilities</h3>
+    <ul>
+      <li>{{ selectedJob.job_Responsibilities }}</li>
+    </ul>
+  </div>
+
+  <div class="mt-3">
+    <h3>Job Postings</h3>
+    <div>Creation Date: {{ selectedJob.job_created_at }}</div>
+    <div>Recruitment Period: {{ selectedJob.Recruitment_start_Period }} - {{ selectedJob.Recruitment_end_Period }}</div>
+    <div>Quota: 1 (One position available)</div>
+    <div>Total Views: 300</div>
+    <div>Total Saves: 75</div>
+    <div>Last Update: {{ selectedJob.job_updated_at }}</div>
+  </div>
+</div>

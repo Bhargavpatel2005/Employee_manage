@@ -37,7 +37,7 @@
             <input type="password" placeholder="Password" formControlName="password" />
             <i class="fas fa-lock"></i>
           </div>
-          
+
           <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
           <button type="submit" [disabled]="loginForm.invalid">
             {{ isLoading ? 'Logging in...' : 'Login' }}
@@ -47,3 +47,4 @@
     </div>
   </div>
 </div>
+

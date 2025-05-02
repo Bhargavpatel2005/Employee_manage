@@ -1,46 +1,29 @@
 <app-sidebar></app-sidebar>
 
 <div class="container">
+  <a routerLink="/requirements/post-job/history"><button class="btn-primary-his">History</button></a>
   <h1>Post Job</h1>
+
   <form #formRef="ngForm">
     <div class="form-row">
       <div class="form-group">
         <label for="job-department">Job Department <span style="color: red">*</span></label>
-        <select [(ngModel)]="job.job_department" id="job_department" name="job_department" id="job-department" required
-          #dept="ngModel">
-          <option value="" disabled selected>Select Job Department</option>
-          <option value="HR">HR</option>
-          <option value="IT">IT</option>
-          <option value="Sales">Sales</option>
-          <option value="Marketing">Marketing</option>
-          <option value="Finance">Finance</option>
-          <option value="Customer Service">Customer Service</option>
-        </select>
+        <input type="text" class="form-control" id="job_department" name="job_department"
+          [(ngModel)]="job.job_department" required #dept="ngModel">
         <div *ngIf="dept.invalid && dept.touched" class="error">Job Department is required.</div>
       </div>
 
       <div class="form-group">
         <label for="job-title">Job Title <span style="color: red">*</span></label>
-        <select [(ngModel)]="job.job_title" name="job_title" id="job_title" required #title="ngModel">
-          <option value="" disabled selected>Select Job Title</option>
-          <option value="Software Engineer">Software Engineer</option>
-          <option value="Web Developer">Web Developer</option>
-          <option value="UI/UX Designer">UI/UX Designer</option>
-          <option value="Project Manager">Project Manager</option>
-          <option value="Product Manager">Product Manager</option>
-        </select>
+        <input type="text" class="form-control" id="job_title" name="job_title" [(ngModel)]="job.job_title" required
+          #title="ngModel">
         <div *ngIf="title.invalid && title.touched" class="error">Job Title is required.</div>
       </div>
 
       <div class="form-group">
         <label for="job-position">Job Position <span style="color: red">*</span></label>
-        <select [(ngModel)]="job.job_position" name="job_position" id="job_position" required #position="ngModel">
-          <option value="" disabled selected>Select Job Position</option>
-          <option value="Mid level">Mid level</option>
-          <option value="Senior level">Senior level</option>
-          <option value="Junior level">Junior level</option>
-          <option value="Intern">Intern</option>
-        </select>
+        <input type="text" class="form-control" id="job_position" name="job_position" [(ngModel)]="job.job_position"
+          required #position="ngModel">
         <div *ngIf="position.invalid && position.touched" class="error">Job Position is required.</div>
       </div>
 
@@ -64,25 +47,15 @@
 
       <div class="form-group">
         <label for="job-type">Job Type <span style="color: red">*</span></label>
-        <select [(ngModel)]="job.job_type" name="job_type" id="job_type" required #type="ngModel">
-          <option value="" disabled selected>Select Job Type</option>
-          <option value="Full time">Full time</option>
-          <option value="Part time">Part time</option>
-          <option value="Contract">Contract</option>
-          <option value="Intern">Intern</option>
-        </select>
+        <input type="text" class="form-control" id="job_type" name="job_type" [(ngModel)]="job.job_type" required
+          #type="ngModel">
         <div *ngIf="type.invalid && type.touched" class="error">Job Type is required.</div>
       </div>
 
       <div class="form-group">
         <label for="job-education">Job Education <span style="color: red">*</span></label>
-        <select [(ngModel)]="job.job_education" name="job_education" id="job_education" required #education="ngModel">
-          <option value="" disabled selected>Select Job Education</option>
-          <option value="Bachelor">Bachelor</option>
-          <option value="Master">Master</option>
-          <option value="Doctorate">Doctorate</option>
-          <option value="Other">Other</option>
-        </select>
+        <input type="text" class="form-control" id="job_education" name="job_education" [(ngModel)]="job.job_education"
+          required #education="ngModel">
         <div *ngIf="education.invalid && education.touched" class="error">Education is required.</div>
       </div>
 
@@ -100,12 +73,42 @@
         </quill-editor>
         <div *ngIf="!job.job_description && formRef.submitted" class="error">Description is required.</div>
       </div>
+
+      <div class="form-group description-group">
+        <label for="job-description">Job Responsibilities <span style="color: red">*</span></label>
+        <quill-editor class="form-control" [(ngModel)]="job.job_Responsibilities" id="job_Responsibilities"
+          name="job_Responsibilities" #job_Responsibilities="ngModel" [styles]="{ height: '155px' }"
+          #description="ngModel">
+        </quill-editor>
+        <div *ngIf="!job.job_Responsibilities && formRef.submitted" class="error">Responsibilities is required.</div>
+      </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
-        <label for="job-min-salary">Job Min Salary <span style="color: red">*</span></label>
-        <input type="text" min="10000" max="20000" class="form-control" id="job-min-salary" name="job_min_salary"
+        <label for="Recruitment_start_Period">Recruitment start Period <span style="color: red">*</span></label>
+        <input type="date" class="form-control" id="Recruitment_start_Period" name="Recruitment_start_Period"
+          [(ngModel)]="job.Recruitment_start_Period" required #start_Period="ngModel" />
+        <div *ngIf="start_Period.invalid && start_Period.touched" class="error">
+          Recruitment start Period is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Recruitment_end_Period">Recruitment End Period <span style="color: red">*</span></label>
+        <input type="date" class="form-control" id="Recruitment_end_Period" name="Recruitment_end_Period"
+          [(ngModel)]="job.Recruitment_end_Period" required #endPeriod="ngModel"/>
+        <div *ngIf="endPeriod.invalid && endPeriod.touched" class="error">
+          Recruitment end Period is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="job-min-salary">Job Min. Salary <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="job-min-salary" name="job_min_salary"
           [(ngModel)]="job.job_min_salary" required #minSalary="ngModel" #minsalary="ngModel">
         <div *ngIf="minSalary.invalid && minSalary.touched" class="error">
           Min Salary is required.
@@ -114,7 +117,7 @@
 
       <div class="form-group">
         <label for="job-max-salary">Job Max Salary <span style="color: red">*</span></label>
-        <input type="text" min="10000" max="200000" default=" " class="form-control" id="job-max-salary" name="job_max_salary"
+        <input type="text" default=" " class="form-control" id="job-max-salary" name="job_max_salary"
           [(ngModel)]="job.job_max_salary" required #maxSalary="ngModel">
         <div *ngIf="maxSalary.invalid && maxSalary.touched" class="error">
           Max Salary is required.
@@ -134,7 +137,17 @@
 
     <div class="button">
       <button type="reset" class="cl-btn btn-primary">Clear</button>
-      <button mat-raised-button class="btn btn-primary" (click)="openDialog(formRef)">Submit</button>
+      <ng-container *ngIf="!job?.id; else updateButton">
+        <button mat-raised-button class="btn btn-primary" (click)="openDialog(formRef)">Submit</button>
+      </ng-container>
+
+      <ng-template #updateButton>
+        <button mat-raised-button class="btn btn-primary" (click)="openDialog(formRef)">Update</button>
+      </ng-template>
+
+
     </div>
   </form>
 </div>
+
+<router-outlet></router-outlet>

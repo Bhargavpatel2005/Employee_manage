@@ -2,7 +2,8 @@
 /* Global Styles */
 
 .center-page {
-  margin-top: 15%;
+  margin-top: 12%;
+  margin-left: 17%;
   margin-right: 3%;
   width: 60vw;
   align-items: center;
@@ -19,7 +20,7 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   /* Flex box for sides */
   .auth-container {
     justify-content: center;
@@ -28,7 +29,7 @@
     background: rgba(255, 255, 255, 0.1);
     background: url('/images/logo-dark.png') no-repeat center center/cover ;
   }
-  
+
   /* LEFT SIDE */
   .auth-left {
     flex: 1;
@@ -40,41 +41,41 @@
     justify-content: center;
     width: 60%;
   }
-  
+
   .auth-left-content {
     text-align: left;
   }
-  
+
   .auth-left h2 {
     font-size: 26px;
     margin-bottom: 10px;
   }
-  
+
   .auth-left h3 {
     font-size: 22px;
     margin-bottom: 10px;
   }
-  
+
   .auth-left p {
     font-size: 14px;
     max-width: 300px;
   }
-  
+
   .social-icons {
     margin-top: 20px;
   }
-  
+
   .social-icons i {
     margin-right: 15px;
     font-size: 18px;
     cursor: pointer;
     transition: color 0.3s;
   }
-  
+
   .social-icons i:hover {
     color: #ffcc00;
   }
-  
+
   /* RIGHT SIDE */
   .auth-right {
     flex: 1;
@@ -83,20 +84,20 @@
     padding: 40px;
     color: #fff;
   }
-  
+
   .auth-right h3 {
     text-align: center;
     margin-bottom: 25px;
     font-size: 26px;
   }
-  
+
   /* Input Fields */
   .input-group {
     position: relative;
     margin-bottom: 30px;
     margin-right: 15px;
   }
-  
+
   .input-group input {
     width: 85%;
     padding: 12px 40px 12px 12px;
@@ -107,7 +108,7 @@
     font-size: 14px;
     outline: none;
   }
-  
+
   .input-group i {
     position: absolute;
     right: 12px;
@@ -115,7 +116,7 @@
     transform: translateY(-50%);
     color: #555;
   }
-  
+
 
   /* Button */
   .auth-right button {
@@ -130,23 +131,23 @@
     cursor: pointer;
     transition: background 0.3s ease;
   }
-  
+
   .auth-right button:disabled {
     background: #cccccc;
     cursor: not-allowed;
   }
-  
+
   .auth-right button:hover:not(:disabled) {
     background: linear-gradient(to right, #60d3e7, #3d4de4);
   }
-  
-  
+
+
   .switch {
     margin-top: 20px;
     font-size: 13px;
     text-align: center;
   }
-  
+
   .switch a {
     color: #ffcc00;
     text-decoration: none;
@@ -188,15 +189,15 @@
   to { border-right-color: transparent; }
 }
 
-  
-  
+
+
   @media (max-width: 768px) {
     .auth-container {
       flex-direction: column;
     }
   }
 .error{
-  color: rgb(238, 107, 107); 
+  color: rgb(238, 107, 107);
 }
 
 
