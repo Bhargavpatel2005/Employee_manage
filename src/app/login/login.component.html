@@ -27,14 +27,15 @@
             <ng-container *ngIf="email.errors?.['email']">Please enter a valid email.</ng-container>
           </div>
           <div class="input-group">
-            <input type="email" placeholder="Email" formControlName="email" formControlName="email" />
+            <input type="email" id="email" name="email" placeholder="Email" formControlName="email"
+              formControlName="email" />
             <i class="fas fa-envelope"></i>
           </div>
           <div class="error" *ngIf="email.valid && password.invalid && (password.touched || loginForm.invalid)">
             <ng-container *ngIf="password.errors?.['required']">Password is required.</ng-container>
           </div>
           <div class="input-group">
-            <input type="password" placeholder="Password" formControlName="password" />
+            <input type="password" id="password" name="password" placeholder="Password" formControlName="password" />
             <i class="fas fa-lock"></i>
           </div>
 
@@ -47,4 +48,3 @@
     </div>
   </div>
 </div>
-

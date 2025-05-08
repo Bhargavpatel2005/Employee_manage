@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AllApiService } from './../../services/api/all-api.service';
 import { Job } from './../../interfaces/interfaces';
@@ -6,17 +6,23 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
+import { DeletemsgComponent } from '../../deletemsg/deletemsg.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SuccessComponent } from '../../success/success.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-history',
   standalone: true,
-  imports: [SidebarComponent, NgIf, NgFor, FormsModule],
+  imports: [SidebarComponent, NgIf, NgFor, FormsModule,CommonModule],
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
 
+  static successMessage = 'successfully completed';
   htmlContent: SafeHtml = '';
 
   totalItems: number = 0;
@@ -28,10 +34,36 @@ export class HistoryComponent implements OnInit {
   selectedJob: Job | null = null;
   protected Math = Math;
 
+  job: Job = {
+    id: 0,
+    job_title: '',
+    job_department: '',
+    job_position: '',
+    job_experience: '',
+    job_type: '',
+    job_education: '',
+    job_skills: '',
+    job_description: '',
+    job_Responsibilities: '',
+    job_location: '',
+    job_min_salary: '',
+    job_max_salary: '',
+    job_status: '',
+    Recruitment_start_Period: new Date,
+    Recruitment_end_Period: new Date,
+    post_app: '',
+    quota: '',
+    job_created_at: '',
+    job_updated_at: '',
+  };
+
   constructor(
     private apiService: AllApiService,
-    private router: Router,private sanitizer: DomSanitizer
-  ) {}
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    public dialog: MatDialog
+  ) { }
+
 
   ngOnInit(): void {
     this.getJobs();
@@ -45,7 +77,7 @@ export class HistoryComponent implements OnInit {
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
     });
   }
-  
+
 
   get filteredJobs(): Job[] {
     if (!this.searchTerm.trim()) return this.jobs;
@@ -73,7 +105,7 @@ export class HistoryComponent implements OnInit {
   }
 
   previousPage(): void {
-    if (this.currentPage > 1){
+    if (this.currentPage > 1) {
       this.currentPage--;
     }
   }
@@ -85,7 +117,8 @@ export class HistoryComponent implements OnInit {
   viewjob(job: Job): void {
     this.apiService.getJobById(job.id).subscribe((data: Job) => {
       this.selectedJob = data;
-      this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(data.job_description);
+      console.log(data);
+      // this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(data.job_description);
     });
   }
 
@@ -93,4 +126,40 @@ export class HistoryComponent implements OnInit {
     if (!job?.id) return;
     this.router.navigate(['requirements/post-job', job.id]);
   }
+
+  deletejob(job: Job): void {
+    const dialogRef = this.dialog.open(DialogContentComponent, {
+      width: '600px',
+      data: job
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result === 'submit') {
+        this.getJobs();
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: 'submit' | undefined) => {
+      if (result === 'submit') {
+        this.apiService.deleteJob(job.id).subscribe({
+          next: () => {
+            this.getJobs();
+          },
+          error: () => {
+
+
+          }
+        });
+      }
+    });
+  }
+  // deleteJob(id: number): void {
+  //   this.apiservices.deleteJob(id).subscribe({
+  //     next: (response) => {
+  //       console.log('Job deleted successfully', response);
+  //     },
+  //     error: (error) => {
+  //       console.error('Error deleting job', error);
+  //     }
+  //   });
+  // }
 }

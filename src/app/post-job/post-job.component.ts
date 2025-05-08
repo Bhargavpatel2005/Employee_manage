@@ -1,5 +1,3 @@
-import { routes } from './../app.routes';
-import { hr_department } from './../interfaces/interfaces';
 import { Component, Injectable } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AllApiService } from '../services/api/all-api.service';
@@ -8,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
 import { WarnigComponentComponent } from './warnig-component/warnig-component.component';
 import { NgFor, NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { QuillModule } from 'ngx-quill';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -19,12 +17,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-post-job',
-  imports: [NgIf,FormsModule, SidebarComponent, QuillModule, MatDialogModule, MatDialogModule,RouterLink, RouterOutlet],
+  imports: [NgIf, FormsModule, SidebarComponent, QuillModule,
+    MatDialogModule, MatDialogModule, RouterLink, RouterOutlet],
   templateUrl: './post-job.component.html',
   styleUrl: './post-job.component.css',
 })
 export class PostJobComponent {
-  jobs: any[] = [];
+  jobs: Job[] = [];
   // Hr_department: hr_department[] = [];
   // departmentTitles:any
 
@@ -38,13 +37,15 @@ export class PostJobComponent {
     job_education: '',
     job_skills: '',
     job_description: '',
-    job_Responsibilities:'',
+    job_Responsibilities: '',
     job_location: '',
     job_min_salary: '',
     job_max_salary: '',
     job_status: '',
     Recruitment_start_Period: new Date,
     Recruitment_end_Period: new Date,
+    post_app: '',
+    quota: '',
     job_created_at: '',
     job_updated_at: '',
   };
@@ -52,9 +53,9 @@ export class PostJobComponent {
   constructor(
     private apiService: AllApiService,
     private router: ActivatedRoute,
-    private routers:Router,
+    private routers: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     // this.hr_department();
@@ -66,8 +67,8 @@ export class PostJobComponent {
     }
   }
 
-  postJob(form: any) {
-    if(this.job.id===0){
+  postJob(form: NgForm) {
+    if (this.job.id === 0) {
       if (form.valid) {
         this.apiService.postJob(this.job).subscribe({
           next: () => {
@@ -79,39 +80,46 @@ export class PostJobComponent {
             });
             localStorage.setItem('recentActivities', JSON.stringify(activities.slice(0, 10)));
             form.resetForm();
+            setTimeout(() => {
+              window.location.replace('requirements/post-job');
+            }, 2000);
           },
-          error: (err) => {
+          error: (err: any) => {
             console.error(err);
           }
         });
       }
     }
-     else {
-      this.apiService.updateJob(this.job.id, this.job).subscribe((data)=>{
+    else {
+      this.apiService.updateJob(this.job.id, this.job).subscribe((data: any) => {
         if (data) {
           this.getJobDetails(this.job.id);
         }
       })
+      form.resetForm();
+      setTimeout(() => {
+        window.location.replace('requirements/post-job');
+      }, 2000);
       this.markFormTouched(form);
     }
   }
 
   openDialog(form: any) {
-      if (form.valid) {
-        const dialogRef = this.dialog.open(DialogContentComponent, {
-          width: '600px',
-          data: this.job
-        });
+    if (form.valid) {
+      const dialogRef = this.dialog.open(DialogContentComponent, {
+        width: '600px',
+        data: this.job
+      });
 
-        dialogRef.afterClosed().subscribe(result => {
-          if (result === 'submit') {
-            this.postJob(form);
-          }
-        });
-      } else {
-        this.markFormTouched(form);
-        this.openWarningDialog();
-      }
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result === 'submit') {
+          this.postJob(form);
+        }
+      });
+    } else {
+      this.markFormTouched(form);
+      this.openWarningDialog();
+    }
 
   }
 
@@ -131,12 +139,12 @@ export class PostJobComponent {
     });
   }
 
-//   onDepartmentChange(event: Event): void {
-//   const selectedValue = (event.target as HTMLSelectElement).value;
-//   if (selectedValue === 'HR') {
-//     this.hr_department();
-//   }
-// }
+  //   onDepartmentChange(event: Event): void {
+  //   const selectedValue = (event.target as HTMLSelectElement).value;
+  //   if (selectedValue === 'HR') {
+  //     this.hr_department();
+  //   }
+  // }
 
   // hr_department() {
   //   this.apiService.hr_depatment().subscribe({
@@ -153,7 +161,8 @@ export class PostJobComponent {
   getJobDetails(id: number) {
     this.apiService.getJobById(id).subscribe((data: Job) => {
       console.log(data);
-      this.job= data; // Populate the form with the fetched job details
+      this.job = data;
+
     });
   }
 }

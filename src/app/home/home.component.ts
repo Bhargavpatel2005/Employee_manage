@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { NgIf } from '@angular/common';
+import { NgIf } from '@angular/common'; 
 
 @Component({
   selector: 'app-home',
-  imports: [ SidebarComponent],
+  imports: [SidebarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -5,9 +5,10 @@ import { RouterLink } from '@angular/router';
 import { AllApiService } from '../services/api/all-api.service';
 import { NgFor } from '@angular/common';
 import { Job } from '../interfaces/interfaces';
+import Container from 'quill/blots/container';
 @Component({
   selector: 'app-requirements',
-  imports: [ SidebarComponent,RouterLink,NgFor],
+  imports: [SidebarComponent, RouterLink, NgFor],
   templateUrl: './requirements.component.html',
   styleUrl: './requirements.component.css'
 })
@@ -20,10 +21,9 @@ export class RequirementsComponent {
     this.getJobs();
   }
   getJobs() {
-    this.apiService.getJobs().subscribe((data) => {
+    this.apiService.getJobs().subscribe((data:any) => {
       console.log(data);
       this.jobs = data
     });
   }
-
 }

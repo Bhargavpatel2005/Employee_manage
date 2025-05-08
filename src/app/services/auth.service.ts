@@ -27,7 +27,7 @@ export class AuthService {
       tap((res: any) => {
         if (isPlatformBrowser(this.platformId)) {
           sessionStorage.setItem('token', res.token);
-          console.log(res);
+          // console.log(res);
         }
       })
     );

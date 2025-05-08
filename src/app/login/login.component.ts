@@ -54,7 +54,7 @@ export class LoginComponent {
   //     console.log(data);
   //   });
   // }
-  
+
   onLogin() {
     if (this.loginForm.valid) {
       this.isLoading = true;
@@ -69,7 +69,7 @@ export class LoginComponent {
           sessionStorage.getItem('token');
           if (this.token) {
             this.isLoading = false;
-            this.router.navigate(['']);
+            this.router.navigate([''], { replaceUrl: true });
           }
         },
         error: (error) => {
@@ -81,7 +81,7 @@ export class LoginComponent {
     } else {
       this.loginForm.markAllAsTouched();
     }
-    this.router.navigate(['/'], { replaceUrl: true });
+    // this.router.navigate(['/'], { replaceUrl: true });
   }
   get email() {
     return this.loginForm.get('email')!;

@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterModule],
+  imports: [RouterModule, RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
   authenticated = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     if (!sessionStorage.getItem('token')) {
@@ -26,14 +27,14 @@ export class SidebarComponent {
         this.clearStorageAndRedirect();
         window.location.replace('/login');
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Logout error:', err);
         this.clearStorageAndRedirect();
       }
     });
   }
-  logoutmessage(){
-    
+  logoutmessage() {
+
   }
 
   private clearStorageAndRedirect() {

@@ -9,9 +9,8 @@
       <span class="input-group-text search-icon">
         <i class="fas fa-search"></i>
       </span>
-      <input type="text" class="form-control search-field"
-             placeholder="Search jobs by title, department, or position"
-             [(ngModel)]="searchTerm" (ngModelChange)="onSearch()">
+      <input type="text" class="form-control search-field" placeholder="Search jobs by title, department, or position"
+        [(ngModel)]="searchTerm" (ngModelChange)="onSearch()">
     </div>
   </div>
 
@@ -52,16 +51,20 @@
         <td>{{ item.job_experience }}</td>
         <td>{{ item.job_type }}</td>
         <td>{{ item.job_created_at }}</td>
-        <td>{{ item.job_min_salary }} - {{ item.job_max_salary }}</td>
+        <td>{{ item.job_min_salary | currency:'INR' }} - {{ item.job_max_salary | currency:'INR'}}</td>
         <td>{{ item.job_status }}</td>
         <td>
-          <button type="button" (click)="viewjob(item)" style="border: none; background: none; padding: 0; cursor: pointer;">
+          <button type="button" (click)="viewjob(item)"
+            style="border: none; background: none; padding: 0; cursor: pointer;">
             <span class="material-symbols-outlined">visibility</span>
           </button>
-          <button type="button" (click)="editjob(item)" style="border: none; background: none; padding: 0; cursor: pointer;">
+          <button type="button" (click)="editjob(item)"
+            style="border: none; background: none; padding: 0; cursor: pointer;">
             <span class="material-symbols-outlined">edit</span>
           </button>
-          <span class="material-symbols-outlined">delete</span>
+          <button type="button" (click)="deletejob(item)"
+            style="border: none; background: none; padding: 0; cursor: pointer;">
+            <span class="material-symbols-outlined">delete</span></button>
         </td>
       </tr>
       <tr *ngIf="paginatedJobs.length === 0">
@@ -78,7 +81,7 @@
       <button class="page-link" (click)="previousPage()">Previous</button>
     </li>
     <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
-        [class.active]="currentPage === i + 1">
+      [class.active]="currentPage === i + 1">
       <button class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</button>
     </li>
     <li class="page-item" [class.disabled]="currentPage === totalPages">
@@ -94,9 +97,9 @@
 
     <div><strong>Status </strong>
       @if (selectedJob.job_status == "Active") {
-        <span style="color: green;"> {{ selectedJob.job_status }}<sup class="glow">*</sup></span>
+      <span style="color: green;"> {{ selectedJob.job_status }}<sup class="glow">*</sup></span>
       }@else{
-        <span style="color: red;"> {{ selectedJob.job_status }}<sup class="glow">*</sup></span>
+      <span style="color: red;"> {{ selectedJob.job_status }}<sup class="glow">*</sup></span>
       }
     </div>
     <div><strong>Department:</strong> {{ selectedJob.job_department }}</div>
@@ -105,7 +108,8 @@
     <div><strong>Work Experience:</strong> {{ selectedJob.job_experience }} years</div>
     <div><strong>Employment Type:</strong> {{ selectedJob.job_type }}</div>
     <!-- <div><strong>Work Type:</strong> Hybrid</div> -->
-    <div><strong>Salary:</strong> ₹{{ selectedJob.job_min_salary }} - ₹{{ selectedJob.job_max_salary }}</div>
+    <div><strong>Salary:</strong> {{ selectedJob.job_min_salary | currency:'INR' }}-{{ selectedJob.job_max_salary | currency:'INR'}}
+    </div>
   </div>
 
   <div class="mt-3">

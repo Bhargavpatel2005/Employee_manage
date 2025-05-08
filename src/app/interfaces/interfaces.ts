@@ -17,6 +17,8 @@ export interface Job{
     job_status: string,
     Recruitment_start_Period: Date|string,
     Recruitment_end_Period: Date|string,
+    post_app:string,
+    quota:number|string,
     job_created_at: Date|string,
     job_updated_at: Date|string,
 }

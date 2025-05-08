@@ -10,14 +10,15 @@ import { HistoryComponent } from './post-job/history/history.component';
 import { SuccessComponent } from './success/success.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'requirements', component: RequirementsComponent},
-    { path: 'requirements/post-job', component:PostJobComponent },
-    { path: 'requirements/post-job/history', component:HistoryComponent },
-    { path: 'requirements/post-job/:id', component:PostJobComponent },
-    { path: 'success', component: SuccessComponent },
-    { path: '**',component: PageNFoundComponent},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  // { path: 'requirements', component: RequirementsComponent},
+  { path: 'requirements', loadComponent: () => import('./requirements/requirements.component').then((c) => c.RequirementsComponent) },
+  { path: 'requirements/post-job', component: PostJobComponent },
+  { path: 'requirements/post-job/history', component: HistoryComponent },
+  { path: 'requirements/post-job/:id', component: PostJobComponent },
+  { path: 'success', component: SuccessComponent },
+  { path: '**', component: PageNFoundComponent },
 
 ];
