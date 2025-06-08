@@ -1,0 +1,10 @@
+/* Custom snack bar style */
+.my-snack-bar {
+  background-color: #4caf50; /* Green background */
+  color: white;              /* White text color */
+  font-weight: bold;         /* Bold text */
+}
+
+.my-snack-bar .mat-action {
+  color: white;             /* Action button color */
+}

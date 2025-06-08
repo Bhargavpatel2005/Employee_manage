@@ -1,12 +1,16 @@
 /* Header Styles */
 .header {
-  background: linear-gradient(135deg, #2c3e50, #3498db);
+  background: linear-gradient(135deg, #579fe7, #8cc5eb);
   padding: 1rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  height: 2%;
   position: fixed;
-  width: 100%;
   top: 0;
+  left: 52%;
+  transform: translateX(-50%);
   z-index: 1000;
+  border-radius: 0 0 15px 15px;
 }
 
 .header-container {
@@ -17,23 +21,14 @@
   justify-content: space-between;
   align-items: center;
 }
-
-/* Logo Styles */
-.logo h1 {
-  color: #ffffff;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: 1px;
-  animation: fadeIn 1s ease-in;
-}
-
-.logo span {
-  color: #e74c3c;
-  font-weight: 300;
-}
-
 /* Navigation Styles */
+.nav-menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 2rem;
+}
+
 .nav-menu ul {
   display: flex;
   gap: 2rem;
@@ -53,52 +48,14 @@
   position: relative;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #e74c3c;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
+
 
 .nav-link:hover {
-  color: #e74c3c;
+  color: #3c3fe7;
 }
 
 .nav-link:hover::after {
   width: 100%;
-}
-
-/* User Profile Styles */
-.user-profile {
-  display: flex;
-  align-items: center;
-}
-
-.profile-icon {
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.profile-icon:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
-}
-
-.profile-icon i {
-  color: #ffffff;
-  font-size: 1.2rem;
 }
 
 /* Animations */
@@ -107,6 +64,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

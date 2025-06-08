@@ -1,0 +1,169 @@
+.container {
+  max-width: 90%;
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(to right, #baceec, #e4e6e9, #baceec, #e4e6e9, #baceec);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+  max-width: 320px;
+}
+
+.description-group {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.description-group ::ng-deep .ck-editor__editable {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.description-group ::ng-deep .ck-editor__editable:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  display: block;
+  width: 10%;
+  margin-left: 1%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #3a6d18;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary-his {
+  display: block;
+  width: 10%;
+  margin-left: 1%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #296269;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.cl-btn {
+  background-color: #e93535;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.button {
+  display: flex;
+  justify-content: end;
+}
+
+
+/* Success Toast */
+.toast.success {
+  animation: slideInRight 0.5s ease, fadeOut 0.5s ease 1.5s forwards;
+}
+
+.toast.success .toast-header {
+  background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem;
+}
+
+.toast.success .toast-header i {
+  color: #fff;
+}
+
+.toast.success .toast-body {
+  padding: 1.2rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+/* Error Toast */
+.toast.error {
+  animation: slideInRight 0.5s ease, fadeOut 0.5s ease 1.5s forwards;
+}
+
+.toast.error .toast-header {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem;
+}
+
+.toast.error .toast-header i {
+  color: #fff;
+}
+
+.toast.error .toast-body {
+  padding: 1.2rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+input[type="date"] {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  width: 60%;
+}
+.required {
+  color: red;
+}
+.error-text {
+  color: red;
+  font-size: 0.85rem;
+}

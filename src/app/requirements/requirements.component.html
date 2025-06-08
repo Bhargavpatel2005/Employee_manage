@@ -1,0 +1,77 @@
+<!-- <app-header></app-header> -->
+<app-sidebar></app-sidebar>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0&icon_names=notifications" />
+<div class="container">
+  <div class="header">
+    <h3 id="h3">Requirements</h3>
+    <div class="user-info">
+      <span class="material-symbols-outlined">notifications</span>
+    </div>
+  </div>
+
+  <div class="job-info">
+    <div class="grp">
+      <div class="sort">
+        <div class="searchbar">
+          <span class="material-symbols-outlined exp">search</span>
+          <input type="text" class="search" placeholder="Search">
+        </div>
+        <div class="custom">
+          <div class="fil">
+            <span class="material-symbols-outlined">filter_alt</span>
+          </div>
+          <select id="sort" class="fil-opt">
+            <option value="">Filters</option>
+            <option value="last-updated">Last Updated</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <a routerLink="/requirements/post-job"><button class="post-job">Post a Job</button></a>
+  </div>
+
+  <div class="job-listings">
+    <ng-container *ngFor="let job of jobs track by index">
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-icon">
+            <span class="material-symbols-outlined">code</span>
+          </div>
+          @if (job.job_status == "Active") {
+          <span class="status-badge active">{{job.job_status}}</span>
+          }@else {
+          <span class="status-badge active" style="color: red;">{{job.job_status}}</span>
+          }
+        </div>
+        Id : {{jobs.indexOf(job) + 1}}
+        <h3 class="job-title">{{job.job_title}}</h3>
+        <p class="job-department">{{job.job_department}}</p>
+        <div class="job-details">
+          <span class="detail-item">
+            <span class="material-symbols-outlined">work</span>
+            {{job.job_position}}
+          </span>
+          <span class="detail-item">
+            <span class="material-symbols-outlined">schedule</span>
+            {{job.job_experience}} Years Experience
+          </span>
+        </div>
+        <div class="salary-range">{{job.job_min_salary}} - {{job.job_max_salary }}</div>
+        <div class="job-type-tags">
+          <span class="job-tag">{{job.job_type}}</span>
+          <span class="job-tag">{{job.job_location}}</span>
+        </div>
+        <div class="applicants-count">
+          <span class="material-symbols-outlined">group</span>
+          <!-- {{job.job_applicants}} Applicants -->
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+</div>

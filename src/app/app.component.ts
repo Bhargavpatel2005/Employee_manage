@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent,SidebarComponent],
+  standalone: true,
+  imports: [RouterOutlet,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

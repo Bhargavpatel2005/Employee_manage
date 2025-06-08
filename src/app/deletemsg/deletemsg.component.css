@@ -1,0 +1,17 @@
+.dialog-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #388e3c; /* Green */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dialog-content p {
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+mat-dialog-actions {
+  padding-bottom: 8px;
+}

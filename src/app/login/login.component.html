@@ -1,0 +1,50 @@
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<div class="center-page">
+  <div class="auth-wrapper">
+    <div class="auth-container">
+
+      <!-- LEFT SIDE -->
+      <div class="auth-left">
+        <div class="auth-left-content">
+          <h3 class="cursor typewriter-animation">Welcome to the BNB run</h3>
+          <p>Each new employee brings with them a potential to achieve and succeed. </p>
+          <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="auth-right">
+        <h3>Login</h3>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="error" *ngIf="email.invalid && (email.touched || loginForm.invalid)">
+            <ng-container *ngIf="email.errors?.['required']">Email is required.</ng-container>
+            <ng-container *ngIf="email.errors?.['email']">Please enter a valid email.</ng-container>
+          </div>
+          <div class="input-group">
+            <input type="email" id="email" name="email" placeholder="Email" formControlName="email"
+              formControlName="email" />
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="error" *ngIf="email.valid && password.invalid && (password.touched || loginForm.invalid)">
+            <ng-container *ngIf="password.errors?.['required']">Password is required.</ng-container>
+          </div>
+          <div class="input-group">
+            <input type="password" id="password" name="password" placeholder="Password" formControlName="password" />
+            <i class="fas fa-lock"></i>
+          </div>
+
+          <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+          <button type="submit" [disabled]="loginForm.invalid">
+            {{ isLoading ? 'Logging in...' : 'Login' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
